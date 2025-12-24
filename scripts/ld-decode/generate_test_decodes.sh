@@ -17,17 +17,24 @@ PAL_CLV_DIR="../../ld-decode/pal/clv"
 # Create output directories if they don't exist
 mkdir -p "$NTSC_CAV_DIR" "$NTSC_CLV_DIR" "$PAL_CAV_DIR" "$PAL_CLV_DIR"
 
-echo "#!/bin/bash"
+# Output file - always in the same directory as this script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+OUTPUT_FILE="$SCRIPT_DIR/decode_commands.sh"
+
+# Start writing to output file
+cat > "$OUTPUT_FILE" << 'EOF'
+#!/bin/bash
+
+# Activate venv
+export VDIR=~/Coding/github/ld-decode-venv
+source $VDIR/bin/activate
+
+echo "========================================"
+echo "Generating ld-decode test files"
+echo "========================================"
 echo ""
-echo "# Activate venv"
-echo "export VDIR=~/Coding/github/ld-decode-venv"
-echo "source \$VDIR/bin/activate"
-echo ""
-echo "echo \"========================================\""
-echo "echo \"Generating ld-decode test files\""
-echo "echo \"========================================\""
-echo "echo \"\""
-echo ""
+
+EOF
 
 # Function to get random number in range
 random_range() {
@@ -76,7 +83,7 @@ get_output_name() {
 
 decode_count=0
 
-echo "echo \"=== NTSC CAV Decodes (1-2 per disc) ===\""
+echo "echo \"=== NTSC CAV Decodes (1-2 per disc) ===\""  >> "$OUTPUT_FILE"
 while IFS=':' read -r filepath rest; do
     # Extract file position range
     if [[ $rest =~ File\ pos\ ([0-9]+)\ -\ ([0-9]+) ]]; then
@@ -97,14 +104,14 @@ while IFS=':' read -r filepath rest; do
             output_name=$(get_output_name "$filepath" "$start_frame")
             output_file="$NTSC_CAV_DIR/${output_name}"
             
-            echo "echo \"[$((++decode_count))] Decoding NTSC CAV: $output_name...\""
-            echo "ld-decode --NTSC --start $start_frame --length $frame_count \"$filepath\" \"$output_file\""
-            echo ""
+            echo "echo \"[$((++decode_count))] Decoding NTSC CAV: $output_name...\"" >> "$OUTPUT_FILE"
+            echo "ld-decode --NTSC --start $start_frame --length $frame_count \"$filepath\" \"$output_file\"" >> "$OUTPUT_FILE"
+            echo "" >> "$OUTPUT_FILE"
         done
     fi
 done < ntsc-cav-master.txt
 
-echo "echo \"=== NTSC CLV Decodes (5-6 per disc, MORE since fewer files) ===\""
+echo "echo \"=== NTSC CLV Decodes (5-6 per disc, MORE since fewer files) ===\"" >> "$OUTPUT_FILE"
 while IFS=':' read -r filepath rest; do
     # Extract file position range
     if [[ $rest =~ File\ pos\ ([0-9]+)\ -\ ([0-9]+) ]]; then
@@ -125,14 +132,14 @@ while IFS=':' read -r filepath rest; do
             output_name=$(get_output_name "$filepath" "$start_frame")
             output_file="$NTSC_CLV_DIR/${output_name}"
             
-            echo "echo \"[$((++decode_count))] Decoding NTSC CLV: $output_name...\""
-            echo "ld-decode --NTSC --start $start_frame --length $frame_count \"$filepath\" \"$output_file\""
-            echo ""
+            echo "echo \"[$((++decode_count))] Decoding NTSC CLV: $output_name...\"" >> "$OUTPUT_FILE"
+            echo "ld-decode --NTSC --start $start_frame --length $frame_count \"$filepath\" \"$output_file\"" >> "$OUTPUT_FILE"
+            echo "" >> "$OUTPUT_FILE"
         done
     fi
 done < ntsc-clv-master.txt
 
-echo "echo \"=== PAL CAV Decodes (1-2 per disc) ===\""
+echo "echo \"=== PAL CAV Decodes (1-2 per disc) ===\"" >> "$OUTPUT_FILE"
 while IFS=':' read -r filepath rest; do
     # Extract file position range
     if [[ $rest =~ File\ pos\ ([0-9]+)\ -\ ([0-9]+) ]]; then
@@ -153,14 +160,14 @@ while IFS=':' read -r filepath rest; do
             output_name=$(get_output_name "$filepath" "$start_frame")
             output_file="$PAL_CAV_DIR/${output_name}"
             
-            echo "echo \"[$((++decode_count))] Decoding PAL CAV: $output_name...\""
-            echo "ld-decode --PAL --start $start_frame --length $frame_count \"$filepath\" \"$output_file\""
-            echo ""
+            echo "echo \"[$((++decode_count))] Decoding PAL CAV: $output_name...\"" >> "$OUTPUT_FILE"
+            echo "ld-decode --PAL --start $start_frame --length $frame_count \"$filepath\" \"$output_file\"" >> "$OUTPUT_FILE"
+            echo "" >> "$OUTPUT_FILE"
         done
     fi
 done < pal-cav-master.txt
 
-echo "echo \"=== PAL CLV Decodes (4-5 per disc, MORE since fewer files) ===\""
+echo "echo \"=== PAL CLV Decodes (4-5 per disc, MORE since fewer files) ===\"" >> "$OUTPUT_FILE"
 while IFS=':' read -r filepath rest; do
     # Extract file position range
     if [[ $rest =~ File\ pos\ ([0-9]+)\ -\ ([0-9]+) ]]; then
@@ -181,14 +188,24 @@ while IFS=':' read -r filepath rest; do
             output_name=$(get_output_name "$filepath" "$start_frame")
             output_file="$PAL_CLV_DIR/${output_name}"
             
-            echo "echo \"[$((++decode_count))] Decoding PAL CLV: $output_name...\""
-            echo "ld-decode --PAL --start $start_frame --length $frame_count \"$filepath\" \"$output_file\""
-            echo ""
+            echo "echo \"[$((++decode_count))] Decoding PAL CLV: $output_name...\"" >> "$OUTPUT_FILE"
+            echo "ld-decode --PAL --start $start_frame --length $frame_count \"$filepath\" \"$output_file\"" >> "$OUTPUT_FILE"
+            echo "" >> "$OUTPUT_FILE"
         done
     fi
 done < pal-clv-master.txt
 
-echo "echo \"\""
-echo "echo \"=======================================\""
-echo "echo \"Generated $decode_count decode commands\""
-echo "echo \"=======================================\""
+cat >> "$OUTPUT_FILE" << EOF
+echo ""
+echo "======================================="
+echo "Generated $decode_count decode commands"
+echo "======================================="
+EOF
+
+chmod +x "$OUTPUT_FILE"
+
+echo "======================================="
+echo "Generated decode_commands.sh"
+echo "Location: $OUTPUT_FILE"
+echo "Total commands: $decode_count"
+echo "======================================="
