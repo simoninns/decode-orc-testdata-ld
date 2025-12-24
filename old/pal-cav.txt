@@ -1,0 +1,45 @@
+/home/sdi/raid/library/Interactive_Video/British_Garden_Birds/British_Garden_Birds_DS2/British_Garden_Birds_DD86-DS2_Side1_20210104_CAV_PAL_00001-53450.ldf
+/home/sdi/raid/library/Interactive_Video/The_UN/The\ World\ the\ UN\ and\ You_CAV_PAL_Disc5_2019-09-15_20-56-00.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS11/Domesday_DD86-DS11_NationalA_NP_20200830_CAV_PAL_00001-51000.ldf
+/home/sdi/raid/library/BBC_AIV/Countryside/Countryside_DS3/Countryside_DD86-DS3_Side1_20200803_CAV_PAL_00001-54085.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS3/Domesday_DD86-DS3_CommunityNorth_20191014_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/City_Disc/City_Disc_DS1/City-Disc_DD86-DS1_Culture1-Side2_20210101_CAV_PAL_00001-44003.ldf
+/home/sdi/raid/library/BBC_AIV/City_Disc/City_Disc_DS2/City-Disc_DD86-DS2_Financial2-Side1_20210101_CAV_PAL_00001-44611.ldf
+/home/sdi/raid/library/Interactive_Video/British_Garden_Birds/British_Garden_Birds_DS3/British_Garden_Birds_DD86-DS3_Side2_20210610_CAV_PAL_00001-53474.ldf
+/home/sdi/raid/library/Interactive_Video/The_UN/The\ World\ the\ UN\ and\ You_CAV_PAL_Disc3_2019-09-15_19-36-50.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS6/Domesday_DD86-DS6_NationalA_PP_20200803_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS12/Domesday_DD86-DS12_CommunitySouth_20220710_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/Interactive_Video/British_Garden_Birds/British_Garden_Birds_DS1/British_Garden_Birds_DD86-DS1_Side2_20200118_CAV_PAL_00001-53444.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS2/Domesday_DD86-DS2_NationalA_PP_20191014_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS3/Domesday_DD86-DS3_CommunitySouth_20191014_CAV_PAL_00001-53040.ldf
+/home/sdi/raid/library/Interactive_Video/British_Garden_Birds/British_Garden_Birds_DS3/British_Garden_Birds_DD86-DS3_Side1_20210610_CAV_PAL_00001-53450.ldf
+/home/sdi/raid/library/BBC_AIV/Countryside/Countryside_DS4/Countryside_DD86-DS4_Side2_20210106_CAV_PAL_00001-51000.ldf
+/home/sdi/raid/library/BBC_AIV/Test_Pressings/TP06/DD_TP06C_Cpy11_CAV_PAL_side1_Armstrong_2020-08-04_11-17-30.ldf
+/home/sdi/raid/library/BBC_AIV/EcoDisc/EcoDisc_DS1/EcoDisc_DD86-DS1_Side2_20200101_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/sftp/simoninns/LDV4300D_1/PAL/Roger\ Rabbit/Roger\ Rabbit\ Bonus\ Disc_CAV_PAL_side1_2019-12-21_18-22-37.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS4/Domesday_DD86-DS4_CommunityNorth_20191014_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/City_Disc/City_Disc_DS1/City-Disc_DD86-DS1_Culture2-Side1_20210101_CAV_PAL_00001-39104.ldf
+/home/sdi/raid/library/Interactive_Video/British_Garden_Birds/British_Garden_Birds_DS2/British_Garden_Birds_DD86-DS2_Side2_20210104_CAV_PAL_00001-53474.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS10/Domesday_DD86-DS10_NationalA_PP_20200829_CAV_PAL_00001-51594.ldf
+/home/sdi/raid/library/Interactive_Video/British_Garden_Birds/British_Garden_Birds_DS4/British_Garden_Birds_DD86-DS4_Side1_20220402_CAV_PAL_00001-53450.ldf
+/home/sdi/raid/library/BBC_AIV/City_Disc/City_Disc_DS2/City-Disc_DD86-DS2_Culture1-Side1_20210101_CAV_PAL_00001-44003.ldf
+/home/sdi/raid/library/BBC_AIV/Test_Pressings/TP05/DD_TP05_CAV_PAL_side1_Armstrong_2020-08-04_12-56-13.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS9/Domesday_DD86-DS9_NationalA_NP_20200829_CAV_PAL_00001-53000.ldf
+/home/sdi/raid/library/Interactive_Video/The_UN/The\ World\ the\ UN\ and\ You_CAV_PAL_Disc1_2019-09-15_18-27-44.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS12/Domesday_DD86-DS12_CommunityNorth_20220710_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/City_Disc/City_Disc_DS2/City-Disc_DD86-DS2_Culture2-Side1_20210101_CAV_PAL_00001-39104.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS4/Domesday_DD86-DS4_CommunitySouth_20191014_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS9/Domesday_DD86-DS9_CommunitySouth_20200814_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/Interactive_Video/Counter_Intelligence/Counter\ Intelligence_CAV_PAL_side1_DS2_2019-10-22_16-58-25.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS9/Domesday_DD86-DS9_CommunityNorth_20200814_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/EcoDisc/EcoDisc_DS3/EcoDisc_DD86-DS3_Side1_20200803_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/Interactive_Video/The_UN/The\ World\ the\ UN\ and\ You_CAV_PAL_Disc7_2019-09-15_21-59-24.ldf
+/home/sdi/raid/library/Calibration/GGV1011/GGV1011_CAV_PAL_side2_DD1_2019-06-12_20-35-19.ldf
+/home/sdi/raid/library/Calibration/GGV1011/GGV1011_CAV_PAL_side1_DD1_2019-06-12_20-18-21.ldf
+/home/sdi/raid/library/BBC_AIV/Countryside/Countryside_DS4/Countryside_DD86-DS4_Side1_20210106_CAV_PAL_00001-54085.ldf
+/home/sdi/raid/library/BBC_AIV/Countryside/Countryside_DS1/Countryside_DD86-DS1_Side1_20200101_CAV_PAL_00001-54085.ldf
+/home/sdi/raid/library/BBC_AIV/North_Polar_Expedition/NPE_DS1/North_Polar_Expedition_DD86-DS1_Side1_20210103_CAV_PAL_00001-51437.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS11/Domesday_DD86-DS11_CommunitySouth_20200814_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/Countryside/Countryside_DS2/Countryside_DD86-DS2_Side1_20200803_CAV_PAL_00001-54085.ldf
+/home/sdi/raid/library/BBC_AIV/Domesday/Domesday_DS4/Domesday_DD86-DS4_NationalA_PP_20191014_CAV_PAL_00001-54000.ldf
+/home/sdi/raid/library/BBC_AIV/Volcanoes/Volcanoes_DS1/Volcanoes_DD86-DS1_Side1_20191227_CAV_PAL_00001-54000.ldf

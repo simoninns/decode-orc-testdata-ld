@@ -1,0 +1,585 @@
+========================================
+NTSC CAV Frame Range Probe Script
+========================================
+
+=========================================
+FILE: /home/sdi/raid/library/Calibration/GGV1069/Pioneer GGV1069_CAV_NTSC_side1_dup1_2019-09-12_21-11-38.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 1.43 seconds to decode 1 frames (11.68 FPS post-setup)
+    Frame 1/1: File Frame 1000: CAV Frame #715                                      
+    FIRST VBI: 715
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 1.38 seconds to decode 1 frames (12.43 FPS post-setup)
+VBI: 715
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 1.85 seconds to decode 1 frames (9.58 FPS post-setup)
+VBI: 10715
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.10 seconds to decode 1 frames (10.69 FPS post-setup)
+VBI: 20715
+    File pos 31000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 26000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.78 seconds to decode 1 frames (8.60 FPS post-setup)
+VBI: 20715
+Found end after 2 backups
+
+>>> RESULT: VBI Range = 715 to 20715 (approx, file pos 1000 to ~21000)
+
+=========================================
+FILE: /home/sdi/raid/library/Arcade/Dragons_Lair/Dragons-Lair_DS1_Side1_20191230_CAV_NTSC.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.54 seconds to decode 1 frames (5.10 FPS post-setup)
+    Frame 1/1: File Frame 1001: CAV Frame #386                                      
+    FIRST VBI: 386
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.43 seconds to decode 1 frames (11.07 FPS post-setup)
+VBI: 386
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.51 seconds to decode 1 frames (7.43 FPS post-setup)
+VBI: 8386
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.68 seconds to decode 1 frames (8.71 FPS post-setup)
+VBI: 16386
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.47 seconds to decode 1 frames (10.87 FPS post-setup)
+VBI: 24386
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.17 seconds to decode 1 frames (11.34 FPS post-setup)
+VBI: 28386
+    File pos 46000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.32 seconds to decode 1 frames (9.51 FPS post-setup)
+VBI: 28386
+Found end after 2 backups
+
+>>> RESULT: VBI Range = 386 to 28386 (approx, file pos 1000 to ~36000)
+
+=========================================
+FILE: /home/sdi/raid/library/Arcade/Dragons_Lair/Dragons-Lair_DS2_Side1_20191230_CAV_NTSC.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.19 seconds to decode 1 frames (7.80 FPS post-setup)
+    Frame 1/1: File Frame 1000: CAV Frame #371                                      
+    FIRST VBI: 371
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.49 seconds to decode 1 frames (10.51 FPS post-setup)
+VBI: 371
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.80 seconds to decode 1 frames (1.97 FPS post-setup)
+VBI: 8371
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.59 seconds to decode 1 frames (9.84 FPS post-setup)
+VBI: 16371
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.29 seconds to decode 1 frames (9.29 FPS post-setup)
+VBI: 24371
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.72 seconds to decode 1 frames (1.74 FPS post-setup)
+VBI: 28371
+    File pos 46000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.88 seconds to decode 1 frames (1.79 FPS post-setup)
+VBI: 28371
+Found end after 2 backups
+
+>>> RESULT: VBI Range = 371 to 28371 (approx, file pos 1000 to ~36000)
+
+=========================================
+FILE: /home/sdi/raid/library/Arcade/Dragons_Lair/Dragons-Lair_DS3_Side1_20191230_CAV_NTSC.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.91 seconds to decode 1 frames (8.27 FPS post-setup)
+    Frame 1/1: File Frame 1001: CAV Pulldown/Telecine Frame                         
+    FIRST VBI: 
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.98 seconds to decode 1 frames (6.45 FPS post-setup)
+No VBI
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 3.24 seconds to decode 1 frames (6.46 FPS post-setup)
+No VBI
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 3.12 seconds to decode 1 frames (8.55 FPS post-setup)
+No VBI
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.65 seconds to decode 1 frames (8.11 FPS post-setup)
+No VBI
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.74 seconds to decode 1 frames (12.39 FPS post-setup)
+No VBI
+    File pos 46000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 41000... 
+Completed without handling any frames.
+FAILED (past end after 2 backups)
+
+>>> RESULT: VBI Range =  to  (approx, file pos 1000 to ~0)
+
+=========================================
+FILE: /home/sdi/raid/library/Arcade/Dragons_Lair/Dragons-Lair_DS4_Side1_20191230_CAV_NTSC.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.21 seconds to decode 1 frames (8.87 FPS post-setup)
+    Frame 1/1: File Frame 1001: CAV Pulldown/Telecine Frame                         
+    FIRST VBI: 
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.20 seconds to decode 1 frames (6.87 FPS post-setup)
+No VBI
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.71 seconds to decode 1 frames (5.33 FPS post-setup)
+No VBI
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 3.01 seconds to decode 1 frames (8.33 FPS post-setup)
+No VBI
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.41 seconds to decode 1 frames (10.53 FPS post-setup)
+VBI: 24324
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.11 seconds to decode 1 frames (10.51 FPS post-setup)
+VBI: 28324
+    File pos 46000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.30 seconds to decode 1 frames (10.60 FPS post-setup)
+VBI: 28324
+Found end after 2 backups
+
+>>> RESULT: VBI Range =  to 28324 (approx, file pos 1000 to ~36000)
+
+=========================================
+FILE: /home/sdi/raid/library/Arcade/Dragons_Lair/Dragons-Lair_DS5_Side1_20191230_CAV_NTSC.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.55 seconds to decode 1 frames (8.07 FPS post-setup)
+    Frame 1/1: File Frame 1001: CAV Frame #320                                      
+    FIRST VBI: 320
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.17 seconds to decode 1 frames (7.89 FPS post-setup)
+VBI: 320
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.08 seconds to decode 1 frames (11.12 FPS post-setup)
+No VBI
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.37 seconds to decode 1 frames (9.03 FPS post-setup)
+No VBI
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.46 seconds to decode 1 frames (6.76 FPS post-setup)
+No VBI
+    File pos 41000... 
+Completed: saving JSON and exiting.
+Took 2.66 seconds to decode 1 frames (8.65 FPS post-setup)
+No VBI
+    File pos 51000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 46000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 41000... 
+Completed: saving JSON and exiting.
+Took 2.45 seconds to decode 1 frames (5.67 FPS post-setup)
+No VBI
+    File pos 51000... 
+Completed without handling any frames.
+FAILED (past end after 2 backups)
+
+>>> RESULT: VBI Range = 320 to 320 (approx, file pos 1000 to ~1000)
+
+=========================================
+FILE: /home/sdi/raid/library/Arcade/Space_Ace/SpaceAce_CAV_NTSC_side1_Arcade_2021-01-04_20-11-18.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 1.86 seconds to decode 1 frames (11.01 FPS post-setup)
+    Frame 1/1: File Frame 1000: CAV Pulldown/Telecine Frame                         
+    FIRST VBI: 
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.03 seconds to decode 1 frames (9.71 FPS post-setup)
+No VBI
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.17 seconds to decode 1 frames (11.13 FPS post-setup)
+No VBI
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.18 seconds to decode 1 frames (8.98 FPS post-setup)
+No VBI
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.26 seconds to decode 1 frames (4.25 FPS post-setup)
+No VBI
+    File pos 41000... 
+Completed: saving JSON and exiting.
+Took 2.11 seconds to decode 1 frames (6.44 FPS post-setup)
+No VBI
+    File pos 51000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 46000... 
+Completed: saving JSON and exiting.
+Took 2.13 seconds to decode 1 frames (10.69 FPS post-setup)
+No VBI
+    File pos 56000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 51000... 
+Completed without handling any frames.
+FAILED (past end after 2 backups)
+
+>>> RESULT: VBI Range =  to  (approx, file pos 1000 to ~0)
+
+=========================================
+FILE: /home/sdi/raid/library/Arcade/Firefox/FIREFOX_CAV_NTSC_side1_2020-08-15_23-46-02.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.40 seconds to decode 1 frames (6.90 FPS post-setup)
+    Frame 1/1: File Frame 1001: CAV Frame #668                                      
+    FIRST VBI: 668
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.36 seconds to decode 1 frames (5.80 FPS post-setup)
+VBI: 668
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.13 seconds to decode 1 frames (1.96 FPS post-setup)
+VBI: 10667
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.96 seconds to decode 1 frames (1.35 FPS post-setup)
+VBI: 20667
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.74 seconds to decode 1 frames (1.78 FPS post-setup)
+VBI: 30667
+    File pos 41000... 
+Completed: saving JSON and exiting.
+Took 2.77 seconds to decode 1 frames (2.14 FPS post-setup)
+VBI: 40667
+    File pos 51000... 
+Completed: saving JSON and exiting.
+Took 2.64 seconds to decode 1 frames (9.93 FPS post-setup)
+VBI: 50667
+    File pos 61000... 
+Completed: saving JSON and exiting.
+Took 2.85 seconds to decode 1 frames (10.66 FPS post-setup)
+VBI: 41883
+    File pos 71000... 
+Completed: saving JSON and exiting.
+Took 3.04 seconds to decode 1 frames (9.00 FPS post-setup)
+VBI: 51883
+    File pos 81000... 
+Completed: saving JSON and exiting.
+Took 2.93 seconds to decode 1 frames (2.30 FPS post-setup)
+VBI: 50007
+    File pos 91000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 86000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 81000... 
+Completed: saving JSON and exiting.
+Took 2.64 seconds to decode 1 frames (2.30 FPS post-setup)
+VBI: 50007
+Found end after 2 backups
+
+>>> RESULT: VBI Range = 668 to 50007 (approx, file pos 1000 to ~81000)
+
+=========================================
+FILE: /home/sdi/raid/sftp/simoninns/LDV4300D_1/NTSC/National Gallery of Art/National Gallery of Art_CAV_NTSC_side1__2020-01-19_20-17-39.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.57 seconds to decode 1 frames (7.59 FPS post-setup)
+    Frame 1/1: File Frame 1000: CAV Frame #579                                      
+    FIRST VBI: 579
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.73 seconds to decode 1 frames (8.06 FPS post-setup)
+VBI: 579
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.53 seconds to decode 1 frames (6.35 FPS post-setup)
+VBI: 10579
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.35 seconds to decode 1 frames (8.21 FPS post-setup)
+VBI: 20580
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.37 seconds to decode 1 frames (7.22 FPS post-setup)
+VBI: 30580
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.65 seconds to decode 1 frames (8.16 FPS post-setup)
+VBI: 35580
+    File pos 46000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 41000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 36000... 
+Completed: saving JSON and exiting.
+Took 2.55 seconds to decode 1 frames (10.26 FPS post-setup)
+VBI: 35580
+Found end after 2 backups
+
+>>> RESULT: VBI Range = 579 to 35580 (approx, file pos 1000 to ~36000)
+
+=========================================
+FILE: /home/sdi/raid/sftp/simoninns/LDV4300D_1/NTSC/National Gallery of Art/National Gallery of Art_CAV_NTSC_side2__2020-01-19_20-46-47.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.55 seconds to decode 1 frames (9.91 FPS post-setup)
+    Frame 1/1: File Frame 1000: CAV Frame #577                                      
+    FIRST VBI: 577
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.70 seconds to decode 1 frames (9.40 FPS post-setup)
+VBI: 577
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.73 seconds to decode 1 frames (7.96 FPS post-setup)
+VBI: 10577
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.24 seconds to decode 1 frames (9.45 FPS post-setup)
+VBI: 20577
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 2.68 seconds to decode 1 frames (8.54 FPS post-setup)
+VBI: 30577
+    File pos 41000... 
+Completed: saving JSON and exiting.
+Took 2.94 seconds to decode 1 frames (7.79 FPS post-setup)
+VBI: 40578
+    File pos 51000... 
+Completed: saving JSON and exiting.
+Took 2.70 seconds to decode 1 frames (11.19 FPS post-setup)
+VBI: 50578
+    File pos 61000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 56000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 51000... 
+Completed: saving JSON and exiting.
+Took 2.55 seconds to decode 1 frames (8.38 FPS post-setup)
+VBI: 50578
+Found end after 2 backups
+
+>>> RESULT: VBI Range = 577 to 50578 (approx, file pos 1000 to ~51000)
+
+=========================================
+FILE: /home/sdi/raid/sftp/simoninns/LDV4300D_1/NTSC/CheckingDolbySurround/CheckingDolbySurround_CAV_NTSC_side1_2021-01-04_22-08-00.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 2.36 seconds to decode 1 frames (5.98 FPS post-setup)
+    Frame 1/1: File Frame 1000: CAV Frame #546                                      
+    FIRST VBI: 546
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 2.29 seconds to decode 1 frames (7.09 FPS post-setup)
+VBI: 546
+    File pos 11000... At field #1, Field phaseID sequence mismatch (1->4) (player may be paused)
+
+Completed: saving JSON and exiting.
+Took 2.24 seconds to decode 1 frames (8.99 FPS post-setup)
+VBI: 10546
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 1.93 seconds to decode 1 frames (9.83 FPS post-setup)
+VBI: 20546
+    File pos 31000... 
+Completed: saving JSON and exiting.
+Took 1.99 seconds to decode 1 frames (7.02 FPS post-setup)
+VBI: 30546
+    File pos 41000... 
+Completed: saving JSON and exiting.
+Took 1.89 seconds to decode 1 frames (11.34 FPS post-setup)
+VBI: 40546
+    File pos 51000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 46000... 
+Completed: saving JSON and exiting.
+Took 1.86 seconds to decode 1 frames (12.42 FPS post-setup)
+VBI: 45546
+    File pos 56000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 51000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 46000... 
+Completed: saving JSON and exiting.
+Took 1.92 seconds to decode 1 frames (10.03 FPS post-setup)
+VBI: 45546
+Found end after 2 backups
+
+>>> RESULT: VBI Range = 546 to 45546 (approx, file pos 1000 to ~46000)
+
+=========================================
+FILE: /home/sdi/raid/sftp/simoninns/LDV4300D_1/NTSC/Calibration Discs/Pioneer_GGV1069_CAV_NTSC_side1_dup1_2020-07-08_17-12-46.ldf
+=========================================
+>>> Probing file position 1000 for first valid VBI frame...
+>>> Running: ld-decode --NTSC --start 1000 --length 1
+
+Completed: saving JSON and exiting.
+Took 1.81 seconds to decode 1 frames (10.81 FPS post-setup)
+    Frame 1/1: File Frame 1001: CAV Frame #646                                      
+    FIRST VBI: 646
+
+>>> Searching for end (probing every 10000 file frames, backup 5000 twice on overshoot)...
+    File pos 1000... 
+Completed: saving JSON and exiting.
+Took 1.82 seconds to decode 1 frames (8.52 FPS post-setup)
+VBI: 646
+    File pos 11000... 
+Completed: saving JSON and exiting.
+Took 2.10 seconds to decode 1 frames (8.95 FPS post-setup)
+VBI: 10646
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 2.07 seconds to decode 1 frames (11.15 FPS post-setup)
+VBI: 20646
+    File pos 31000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 1/2)
+    File pos 26000... 
+Completed without handling any frames.
+OVERSHOT, backing up 5000 (backup 2/2)
+    File pos 21000... 
+Completed: saving JSON and exiting.
+Took 1.99 seconds to decode 1 frames (11.37 FPS post-setup)
+VBI: 20646
+Found end after 2 backups
+
+>>> RESULT: VBI Range = 646 to 20646 (approx, file pos 1000 to ~21000)
+
+========================================
+Results saved to ntsc-cav-frame-ranges.txt
+========================================

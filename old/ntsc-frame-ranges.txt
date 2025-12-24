@@ -1,0 +1,4 @@
+/home/sdi/raid/library/Calibration/GGV1069/Pioneer GGV1069_CAV_NTSC_side1_dup1_2019-09-12_21-11-38.ldf: 715 - 20715
+/home/sdi/raid/library/Arcade/Dragons_Lair/Dragons-Lair_DS1_Side1_20191230_CAV_NTSC.ldf: 386 - 28386
+/home/sdi/raid/library/Arcade/Dragons_Lair/Dragons-Lair_DS2_Side1_20191230_CAV_NTSC.ldf: 371 - 28371
+/home/sdi/raid/library/Arcade/Dragons_Lair/Dragons-Lair_DS3_Side1_20191230_CAV_NTSC.ldf:  - 
