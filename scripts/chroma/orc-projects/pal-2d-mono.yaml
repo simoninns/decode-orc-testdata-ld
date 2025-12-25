@@ -33,10 +33,13 @@ dag:
           value: ../../rgb/pal_2d_mono.rgb
         decoder_type:
           type: string
-          value: mono
+          value: auto
         output_format:
           type: string
           value: rgb
+        blackandwhite:
+          type: boolean
+          value: true
         start_frame:
           type: integer
           value: 1
