@@ -1,134 +1,102 @@
-# decode-orc-testdata
-A repository of test data for the Decode ORC project
+# decode-orc-testdata-ld
+A repository of LaserDisc test data for the Decode Orc project - it is intended to be used as a decode-orc git sub-module.
 
 ## Overview
-This repository contains test data and automated scripts for generating ld-decode test files from a curated collection of LaserDisc captures. The test data is used to validate the decode-orc project.
+This repository contains ld-decode test data used for the verification of the decode-orc project with the ld-decode front-end.
+
+The test data in this repository is in LDF format which is the native input format for ld-decode.  This is so the test procedure can run end-to-end, starting with ld-decode decoding the LDF files into TBC (and associated files) which are then sourced by decode-orc for processing.
+
+Note: Any copyright material is included under fair-use, research.  All material are short clips of less than 5 seconds.
 
 ## Repository Structure
 
+The repository is organized into two main directories:
+
+### `ldf/`
+Contains standard LaserDisc test files organized by video standard and disc format:
 ```
-decode-orc-testdata/
-├── ld-decode/                    # Test data output directory
+ldf/
+├── ntsc/
+│   ├── cav/    # NTSC CAV (Constant Angular Velocity) discs
+│   └── clv/    # NTSC CLV (Constant Linear Velocity) discs
+└── pal/
+    ├── cav/    # PAL CAV discs
+    └── clv/    # PAL CLV discs
+```
+
+Test files include a variety of LaserDisc content:
+- **NTSC CAV**: Dragons Lair, Firefox, National Gallery of Art, Pioneer test discs
+- **NTSC CLV**: Bambi, Cinderella (Japan imports with closed captions)
+- **PAL CAV**: BBC Domesday Project discs, British Garden Birds, EcoDisc, Roger Rabbit
+- **PAL CLV**: BBC Domesday Project National B discs, BBC Archives
+
+### `ldf-stacking/`
+Contains LaserDisc files specifically for testing frame stacking functionality:
+```
+ldf-stacking/
+├── ntsc/
+│   └── cav/    # Multiple captures of Dragons Lair for testing stacking
+└── pal/
+    ├── cav/    # Multiple captures of British Garden Birds
+    └── clv/    # Additional PAL CLV test files
+```
+
+These files represent multiple captures of the same content from different discs or at different positions, useful for testing frame alignment and stacking algorithms.
+
+## Usage
+
+### Prerequisites
+- [ld-decode](https://github.com/happycube/ld-decode) installed and available in your PATH
+- Sufficient disk space for TBC output files (TBC files are significantly larger than LDF files)
+
+### Decoding Test Files
+
+Use the provided script to decode all test files:
+
+```bash
+./scripts/decode_all_test_files.sh
+```
+
+This script will:
+1. Process all `.ldf` files in both `ldf/` and `ldf-stacking/` directories
+2. Automatically detect PAL vs NTSC from the directory structure
+3. Create TBC files in the `tbc/` output directory (mirroring the source structure)
+4. Generate `.tbc` and `.tbc.json` files for each input
+5. Clean up unnecessary output files (`.efm`, `.pcm`, `.log`)
+6. Display progress and summary statistics
+
+### Output Structure
+
+Decoded files are saved to:
+```
+tbc/
+├── ldf/
 │   ├── ntsc/
-│   │   ├── cav/                  # NTSC CAV test files
-│   │   └── clv/                  # NTSC CLV test files
-│   ├── pal/
-│   │   ├── cav/                  # PAL CAV test files
-│   │   └── clv/                  # PAL CLV test files
-│   ├── ntsc-cav-master.txt       # NTSC CAV source list with frame ranges
-│   ├── ntsc-clv-master.txt       # NTSC CLV source list with frame ranges
-│   ├── pal-cav-master.txt        # PAL CAV source list with frame ranges
-│   ├── pal-clv-master.txt        # PAL CLV source list with frame ranges
-│   └── TBC_SIZE_LIMITS.txt       # Frame count limits for 50MB TBC files
-│
-├── scripts/ld-decode/            # Test generation and management scripts
-│   ├── generate_test_decodes.sh  # Generates decode_commands.sh
-│   ├── decode_commands.sh        # Executes all test decodes
-│   ├── clean_test_files.sh       # Removes all generated test files
-│   ├── ntsc-cav-master.txt       # Master lists (symlinked/copied here)
-│   ├── ntsc-clv-master.txt
-│   ├── pal-cav-master.txt
-│   └── pal-clv-master.txt
-│
-├── ntsc-ld-sources.txt           # Original NTSC LaserDisc file list
-├── pal-ld-sources.txt            # Original PAL LaserDisc file list
-└── venv.txt                      # Python venv location for ld-decode
+│   │   ├── cav/
+│   │   └── clv/
+│   └── pal/
+│       ├── cav/
+│       └── clv/
+└── ldf-stacking/
+    ├── ntsc/
+    │   └── cav/
+    └── pal/
+        ├── cav/
+        └── clv/
 ```
 
-## Source Data
+Each `.ldf` file produces:
+- `<filename>.tbc` - Time Base Corrected video data
+- `<filename>.tbc.db` - Metadata including frame information, VBI data, etc.
+- ...and more (such as audio, EFM, logs, etc.)
 
-The test data is generated from **20 discs** (out of 77 analyzed LaserDisc captures) to provide maximum format and content diversity:
+## Test File Naming Convention
 
-- **NTSC CAV**: 5 discs (calibration, arcade games, educational, audio test)
-- **NTSC CLV**: 2 discs (movies)
-- **PAL CAV**: 6 discs (calibration, documentaries, educational, data, entertainment)
-- **PAL CLV**: 7 discs (historical data discs with variant types)
-
-All 77 source discs have been analyzed to determine valid VBI frame ranges and file positions. The 20 selected discs represent the most diverse subset for testing purposes.
-
-## Test File Generation
-
-### Generate Test Files
-
-The `generate_test_decodes.sh` script creates randomized test .ldf snippets:
-
-```bash
-cd scripts/ld-decode
-./generate_test_decodes.sh
+LDF files follow a descriptive naming pattern:
+```
+<Title>_<DiscType>_<VideoStandard>_<Side>_<AdditionalInfo>_<Timestamp>_<Position>.ldf
 ```
 
-This generates `decode_commands.sh` with **20 decode commands** (one per selected disc) that:
-- Use `--write-test-ldf` to create .ldf snippet files only (no full TBC output)
-- Extract 48-58 frames for NTSC (typical .ldf size: ~50-80MB)
-- Extract 30-40 frames for PAL (typical .ldf size: ~50-80MB)
-- Sample from randomized positions (start/middle/end of each disc)
-- Automatically clean up temporary .tbc/.json files after .ldf creation
-
-### Execute Decodes
-
-```bash
-cd scripts/ld-decode
-./decode_commands.sh
-```
-
-This will generate **20 .ldf snippet files** in:
-- `ld-decode/ntsc/cav/` (5 files)
-- `ld-decode/ntsc/clv/` (2 files)
-- `ld-decode/pal/cav/` (6 files)
-- `ld-decode/pal/clv/` (7 files)
-
-The .ldf files contain only the RF samples needed for the selected frame ranges, making them ideal for test data repositories.
-
-### Clean Test Files
-
-```bash
-cd scripts/ld-decode
-./clean_test_files.sh
-```
-
-Removes all generated files from the output directories. Since we use `--write-test-ldf`, typically only .ldf files remain (temporary .tbc/.json files are auto-deleted during generation).
-
-## File Size Guidelines
-
-Based on actual measurements:
-
-- **NTSC .ldf snippets**: 48-58 frames → typical size 50-80MB
-- **PAL .ldf snippets**: 30-40 frames → typical size 50-80MB
-
-These frame counts keep individual test files at a reasonable size for GitHub repositories while providing sufficient data for testing.
-
-See `scripts/ld-decode/TBC_SIZE_LIMITS.txt` for TBC size calculations.
-
-## Source Stages
-
-Decode ORC provides source stages for different input types:
-
-- **LDPALsource**: LaserDisc PAL TBC/metadata produced by `ld-decode --PAL`
-- **LDNTSCsource**: LaserDisc NTSC TBC/metadata produced by `ld-decode --NTSC` or `--NTSCJ`
-
-## Master Lists
-
-Each master list (`*-master.txt`) contains:
-- Full path to source `.ldf` file
-- VBI frame/timecode range (where available)
-- File position range for decode start/length parameters
-
-Format: `filepath: VBI start - end | File pos start - end`
-
-Example:
-```
-/path/to/disc.ldf: VBI 715 - 20715 | File pos 1000 - 21000
-/path/to/disc.ldf: VBI 0:23.19 - 39:19.10 | File pos 1000 - 71000
-```
-
-## Requirements
-
-- ld-decode installation in Python virtual environment
-- Path to venv specified in `venv.txt`
-- Access to LaserDisc `.ldf` capture files
-
-## Future Additions
-
-- VHS-decode PAL test data
-- VHS-decode NTSC test data
-- Chroma-encoder source test data
+Examples:
+- `Dragons-Lair_DS1_Side1_20191230_CAV_NTSC_pos3103.ldf`
+- `Domesday_DD86-DS10_NationalB_PP_20200830_CLV_PAL_00-60_pos64678.ldf`
