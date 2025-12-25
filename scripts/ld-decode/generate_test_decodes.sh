@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Script to generate ld-decode test files from all analyzed discs
-# Creates a good mixture of decodes from different positions (start/middle/end)
-# with appropriate frame counts based on TBC size limits
+# Script to generate ld-decode test .ldf files from selected discs
+# Limited to 20 diverse discs across all formats for GitHub repo size constraints
+# Uses --write-test-ldf to extract just the needed .ldf sections without full decode output
 
 # Activate venv
 export VDIR=~/Coding/github/ld-decode-venv
@@ -30,7 +30,8 @@ export VDIR=~/Coding/github/ld-decode-venv
 source $VDIR/bin/activate
 
 echo "========================================"
-echo "Generating ld-decode test files"
+echo "Generating ld-decode test .ldf files"
+echo "20 diverse discs selected"
 echo "========================================"
 echo ""
 
@@ -81,124 +82,183 @@ get_output_name() {
     echo "${basename}_pos${position}"
 }
 
+# Track processed discs to avoid duplicates
+declare -A processed_discs
+
 decode_count=0
 
-echo "echo \"=== NTSC CAV Decodes (1-2 per disc) ===\""  >> "$OUTPUT_FILE"
+echo "echo \"=== NTSC CAV Decodes (5 discs) ===\""  >> "$OUTPUT_FILE"
 while IFS=':' read -r filepath rest; do
     # Extract file position range
     if [[ $rest =~ File\ pos\ ([0-9]+)\ -\ ([0-9]+) ]]; then
         start_pos=${BASH_REMATCH[1]}
         end_pos=${BASH_REMATCH[2]}
         
-        # Determine number of decodes (1 or 2)
-        num_decodes=$((RANDOM % 2 + 1))
+        # Check if this is one of our selected discs and not already processed
+        if [[ "$filepath" =~ Pioneer.*GGV1069 ]] && [[ -z "${processed_discs[GGV1069_NTSC]}" ]]; then
+            processed_discs[GGV1069_NTSC]=1
+        elif [[ "$filepath" =~ Dragons-Lair.*DS1 ]] && [[ -z "${processed_discs[DragonsLair_DS1]}" ]]; then
+            processed_discs[DragonsLair_DS1]=1
+        elif [[ "$filepath" =~ FIREFOX ]] && [[ -z "${processed_discs[FIREFOX]}" ]]; then
+            processed_discs[FIREFOX]=1
+        elif [[ "$filepath" =~ National.*Gallery.*of.*Art ]] && [[ -z "${processed_discs[National_Gallery]}" ]]; then
+            processed_discs[National_Gallery]=1
+        elif [[ "$filepath" =~ CheckingDolbySurround ]] && [[ -z "${processed_discs[CheckingDolby]}" ]]; then
+            processed_discs[CheckingDolby]=1
+        else
+            continue
+        fi
         
-        for ((i=0; i<num_decodes; i++)); do
-            # Random frame count: 48-58 frames for NTSC
-            frame_count=$(random_range 48 58)
-            
-            # Get random position
-            start_frame=$(get_random_position $start_pos $end_pos $frame_count)
-            
-            # Create output filename
-            output_name=$(get_output_name "$filepath" "$start_frame")
-            output_file="$NTSC_CAV_DIR/${output_name}"
-            
-            echo "echo \"[$((++decode_count))] Decoding NTSC CAV: $output_name...\"" >> "$OUTPUT_FILE"
-            echo "ld-decode --NTSC --start $start_frame --length $frame_count \"$filepath\" \"$output_file\"" >> "$OUTPUT_FILE"
-            echo "" >> "$OUTPUT_FILE"
-        done
+        # Single decode per disc
+        # Random frame count: 48-58 frames for NTSC
+        frame_count=$(random_range 48 58)
+        
+        # Get random position
+        start_frame=$(get_random_position $start_pos $end_pos $frame_count)
+        
+        # Create output filename
+        output_name=$(get_output_name "$filepath" "$start_frame")
+        ldf_file="$NTSC_CAV_DIR/${output_name}.ldf"
+        temp_output="/tmp/${output_name}_temp"
+        
+        echo "echo \"[$((++decode_count))] Generating NTSC CAV test LDF: $output_name...\"" >> "$OUTPUT_FILE"
+        echo "ldf_file=\"$ldf_file\"" >> "$OUTPUT_FILE"
+        echo "temp_output=\"$temp_output\"" >> "$OUTPUT_FILE"
+        echo "ld-decode --NTSC --start $start_frame --length $frame_count --write-test-ldf \"\$ldf_file\" \"$filepath\" \"\$temp_output\" && rm -f \"\$temp_output.tbc\" \"\$temp_output.tbc.json\"" >> "$OUTPUT_FILE"
+        echo "" >> "$OUTPUT_FILE"
     fi
 done < ntsc-cav-master.txt
 
-echo "echo \"=== NTSC CLV Decodes (5-6 per disc, MORE since fewer files) ===\"" >> "$OUTPUT_FILE"
+echo "echo \"=== NTSC CLV Decodes (2 discs) ===\"" >> "$OUTPUT_FILE"
 while IFS=':' read -r filepath rest; do
     # Extract file position range
     if [[ $rest =~ File\ pos\ ([0-9]+)\ -\ ([0-9]+) ]]; then
         start_pos=${BASH_REMATCH[1]}
         end_pos=${BASH_REMATCH[2]}
         
-        # More decodes for CLV: 5-6 per disc
-        num_decodes=$(random_range 5 6)
+        # Check if this is one of our selected discs and not already processed
+        if [[ "$filepath" =~ Bambi.*CLV.*NTSC ]] && [[ -z "${processed_discs[Bambi_CLV]}" ]]; then
+            processed_discs[Bambi_CLV]=1
+        elif [[ "$filepath" =~ Cinderella.*CLV.*NTSC ]] && [[ -z "${processed_discs[Cinderella_CLV]}" ]]; then
+            processed_discs[Cinderella_CLV]=1
+        else
+            continue
+        fi
         
-        for ((i=0; i<num_decodes; i++)); do
-            # Random frame count: 48-58 frames for NTSC
-            frame_count=$(random_range 48 58)
-            
-            # Get random position
-            start_frame=$(get_random_position $start_pos $end_pos $frame_count)
-            
-            # Create output filename
-            output_name=$(get_output_name "$filepath" "$start_frame")
-            output_file="$NTSC_CLV_DIR/${output_name}"
-            
-            echo "echo \"[$((++decode_count))] Decoding NTSC CLV: $output_name...\"" >> "$OUTPUT_FILE"
-            echo "ld-decode --NTSC --start $start_frame --length $frame_count \"$filepath\" \"$output_file\"" >> "$OUTPUT_FILE"
-            echo "" >> "$OUTPUT_FILE"
-        done
+        # Single decode per disc
+        # Random frame count: 48-58 frames for NTSC
+        frame_count=$(random_range 48 58)
+        
+        # Get random position
+        start_frame=$(get_random_position $start_pos $end_pos $frame_count)
+        
+        # Create output filename
+        output_name=$(get_output_name "$filepath" "$start_frame")
+        ldf_file="$NTSC_CLV_DIR/${output_name}.ldf"
+        temp_output="/tmp/${output_name}_temp"
+        
+        echo "echo \"[$((++decode_count))] Generating NTSC CLV test LDF: $output_name...\"" >> "$OUTPUT_FILE"
+        echo "ldf_file=\"$ldf_file\"" >> "$OUTPUT_FILE"
+        echo "temp_output=\"$temp_output\"" >> "$OUTPUT_FILE"
+        echo "ld-decode --NTSC --start $start_frame --length $frame_count --write-test-ldf \"\$ldf_file\" \"$filepath\" \"\$temp_output\" && rm -f \"\$temp_output.tbc\" \"\$temp_output.tbc.json\"" >> "$OUTPUT_FILE"
+        echo "" >> "$OUTPUT_FILE"
     fi
 done < ntsc-clv-master.txt
 
-echo "echo \"=== PAL CAV Decodes (1-2 per disc) ===\"" >> "$OUTPUT_FILE"
+echo "echo \"=== PAL CAV Decodes (6 discs) ===\"" >> "$OUTPUT_FILE"
 while IFS=':' read -r filepath rest; do
     # Extract file position range
     if [[ $rest =~ File\ pos\ ([0-9]+)\ -\ ([0-9]+) ]]; then
         start_pos=${BASH_REMATCH[1]}
         end_pos=${BASH_REMATCH[2]}
         
-        # Determine number of decodes (1 or 2)
-        num_decodes=$((RANDOM % 2 + 1))
+        # Check if this is one of our selected discs and not already processed
+        if [[ "$filepath" =~ GGV1011 ]] && [[ -z "${processed_discs[GGV1011]}" ]]; then
+            processed_discs[GGV1011]=1
+        elif [[ "$filepath" =~ DD86-DS4.*CommunityNorth ]] && [[ -z "${processed_discs[DS4_CommunityNorth]}" ]]; then
+            processed_discs[DS4_CommunityNorth]=1
+        elif [[ "$filepath" =~ EcoDisc.*DD86-DS1 ]] && [[ -z "${processed_discs[EcoDisc_DS1]}" ]]; then
+            processed_discs[EcoDisc_DS1]=1
+        elif [[ "$filepath" =~ Roger.*Rabbit.*Bonus ]] && [[ -z "${processed_discs[Roger_Rabbit]}" ]]; then
+            processed_discs[Roger_Rabbit]=1
+        elif [[ "$filepath" =~ British.*Garden.*Birds.*DD86-DS2 ]] && [[ -z "${processed_discs[Birds_DS2]}" ]]; then
+            processed_discs[Birds_DS2]=1
+        elif [[ "$filepath" =~ City-Disc.*DD86-DS1.*Culture2 ]] && [[ -z "${processed_discs[City_DS1_Culture2]}" ]]; then
+            processed_discs[City_DS1_Culture2]=1
+        else
+            continue
+        fi
         
-        for ((i=0; i<num_decodes; i++)); do
-            # Random frame count: 30-40 frames for PAL
-            frame_count=$(random_range 30 40)
-            
-            # Get random position
-            start_frame=$(get_random_position $start_pos $end_pos $frame_count)
-            
-            # Create output filename
-            output_name=$(get_output_name "$filepath" "$start_frame")
-            output_file="$PAL_CAV_DIR/${output_name}"
-            
-            echo "echo \"[$((++decode_count))] Decoding PAL CAV: $output_name...\"" >> "$OUTPUT_FILE"
-            echo "ld-decode --PAL --start $start_frame --length $frame_count \"$filepath\" \"$output_file\"" >> "$OUTPUT_FILE"
-            echo "" >> "$OUTPUT_FILE"
-        done
+        # Single decode per disc
+        # Random frame count: 30-40 frames for PAL
+        frame_count=$(random_range 30 40)
+        
+        # Get random position
+        start_frame=$(get_random_position $start_pos $end_pos $frame_count)
+        
+        # Create output filename
+        output_name=$(get_output_name "$filepath" "$start_frame")
+        ldf_file="$PAL_CAV_DIR/${output_name}.ldf"
+        temp_output="/tmp/${output_name}_temp"
+        
+        echo "echo \"[$((++decode_count))] Generating PAL CAV test LDF: $output_name...\"" >> "$OUTPUT_FILE"
+        echo "ldf_file=\"$ldf_file\"" >> "$OUTPUT_FILE"
+        echo "temp_output=\"$temp_output\"" >> "$OUTPUT_FILE"
+        echo "ld-decode --PAL --start $start_frame --length $frame_count --write-test-ldf \"\$ldf_file\" \"$filepath\" \"\$temp_output\" && rm -f \"\$temp_output.tbc\" \"\$temp_output.tbc.json\"" >> "$OUTPUT_FILE"
+        echo "" >> "$OUTPUT_FILE"
     fi
 done < pal-cav-master.txt
 
-echo "echo \"=== PAL CLV Decodes (4-5 per disc, MORE since fewer files) ===\"" >> "$OUTPUT_FILE"
+echo "echo \"=== PAL CLV Decodes (7 discs) ===\"" >> "$OUTPUT_FILE"
 while IFS=':' read -r filepath rest; do
     # Extract file position range
     if [[ $rest =~ File\ pos\ ([0-9]+)\ -\ ([0-9]+) ]]; then
         start_pos=${BASH_REMATCH[1]}
         end_pos=${BASH_REMATCH[2]}
         
-        # More decodes for CLV: 4-5 per disc
-        num_decodes=$(random_range 4 5)
+        # Check if this is one of our selected discs and not already processed
+        if [[ "$filepath" =~ DD86-DS1.*NationalB.*PP ]] && [[ -z "${processed_discs[DS1_NationalB_PP]}" ]]; then
+            processed_discs[DS1_NationalB_PP]=1
+        elif [[ "$filepath" =~ DD86-DS3.*NationalB.*NP ]] && [[ -z "${processed_discs[DS3_NationalB_NP]}" ]]; then
+            processed_discs[DS3_NationalB_NP]=1
+        elif [[ "$filepath" =~ DD86-DS5.*NationalB.*AK ]] && [[ -z "${processed_discs[DS5_NationalB_AK]}" ]]; then
+            processed_discs[DS5_NationalB_AK]=1
+        elif [[ "$filepath" =~ DD86-DS7.*NationalB.*PP ]] && [[ -z "${processed_discs[DS7_NationalB_PP]}" ]]; then
+            processed_discs[DS7_NationalB_PP]=1
+        elif [[ "$filepath" =~ DD86-DS10.*NationalB.*PP ]] && [[ -z "${processed_discs[DS10_NationalB_PP]}" ]]; then
+            processed_discs[DS10_NationalB_PP]=1
+        elif [[ "$filepath" =~ DD86-DS12.*NationalB.*PP ]] && [[ -z "${processed_discs[DS12_NationalB_PP]}" ]]; then
+            processed_discs[DS12_NationalB_PP]=1
+        elif [[ "$filepath" =~ TImagesOf80s.*TP06 ]] && [[ -z "${processed_discs[ImagesOf80s]}" ]]; then
+            processed_discs[ImagesOf80s]=1
+        else
+            continue
+        fi
         
-        for ((i=0; i<num_decodes; i++)); do
-            # Random frame count: 30-40 frames for PAL
-            frame_count=$(random_range 30 40)
-            
-            # Get random position
-            start_frame=$(get_random_position $start_pos $end_pos $frame_count)
-            
-            # Create output filename
-            output_name=$(get_output_name "$filepath" "$start_frame")
-            output_file="$PAL_CLV_DIR/${output_name}"
-            
-            echo "echo \"[$((++decode_count))] Decoding PAL CLV: $output_name...\"" >> "$OUTPUT_FILE"
-            echo "ld-decode --PAL --start $start_frame --length $frame_count \"$filepath\" \"$output_file\"" >> "$OUTPUT_FILE"
-            echo "" >> "$OUTPUT_FILE"
-        done
+        # Single decode per disc
+        # Random frame count: 30-40 frames for PAL
+        frame_count=$(random_range 30 40)
+        
+        # Get random position
+        start_frame=$(get_random_position $start_pos $end_pos $frame_count)
+        
+        # Create output filename
+        output_name=$(get_output_name "$filepath" "$start_frame")
+        ldf_file="$PAL_CLV_DIR/${output_name}.ldf"
+        temp_output="/tmp/${output_name}_temp"
+        
+        echo "echo \"[$((++decode_count))] Generating PAL CLV test LDF: $output_name...\"" >> "$OUTPUT_FILE"
+        echo "ldf_file=\"$ldf_file\"" >> "$OUTPUT_FILE"
+        echo "temp_output=\"$temp_output\"" >> "$OUTPUT_FILE"
+        echo "ld-decode --PAL --start $start_frame --length $frame_count --write-test-ldf \"\$ldf_file\" \"$filepath\" \"\$temp_output\" && rm -f \"\$temp_output.tbc\" \"\$temp_output.tbc.json\"" >> "$OUTPUT_FILE"
+        echo "" >> "$OUTPUT_FILE"
     fi
 done < pal-clv-master.txt
 
 cat >> "$OUTPUT_FILE" << EOF
 echo ""
 echo "======================================="
-echo "Generated $decode_count decode commands"
+echo "Generated \$decode_count decode commands"
 echo "======================================="
 EOF
 
