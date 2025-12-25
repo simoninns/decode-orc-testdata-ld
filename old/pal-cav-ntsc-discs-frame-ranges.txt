@@ -1,5 +1,0 @@
-/home/sdi/raid/library/Interactive_Video/Apple_Visual_Almanac/Apple_Visual_Almanac_DS1/Apple_Visual_Almanac_DD86-DS1_SideA_20200119_CAV_NTSC_00001-50683.ldf: VBI 581 - 47605 | File pos 1000 - 51000
-/home/sdi/raid/library/Interactive_Video/Apple_Visual_Almanac/Apple_Visual_Almanac_DS3/Apple_Visual_Almanac_DD86-DS3_SideB_20210106_CAV_NTSC_00001-53361.ldf: VBI 609 - 49969 | File pos 1000 - 51000
-/home/sdi/raid/library/Interactive_Video/Apple_Visual_Almanac/Apple_Visual_Almanac_DS2/Apple_Visual_Almanac_DD86-DS2_SideA_20190205_CAV_NTSC_00001-50683.ldf: VBI 573 - 47597 | File pos 1000 - 51000
-/home/sdi/raid/library/Interactive_Video/Apple_Visual_Almanac/Apple_Visual_Almanac_DS1/Apple_Visual_Almanac_DD86-DS1_SideB_20200119_CAV_NTSC_00001-53361.ldf: VBI 586 - 49946 | File pos 1000 - 51000
-/home/sdi/raid/library/Interactive_Video/Apple_Visual_Almanac/Apple_Visual_Almanac_DS3/Apple_Visual_Almanac_DD86-DS3_SideA_20210106_CAV_NTSC_00001-50683.ldf: VBI 562 - 38750 | File pos 1000 - 41000

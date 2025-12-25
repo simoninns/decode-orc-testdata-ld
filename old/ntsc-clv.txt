@@ -1,4 +1,0 @@
-/home/sdi/raid/sftp/simoninns/LDV4300D_1/NTSC/Cinderella\ Japan/Cinderella_CLV_NTSC_side1_JapanImport_CC_2020-01-22_18-19-04.ldf
-/home/sdi/raid/sftp/simoninns/LDV4300D_1/NTSC/Cinderella\ Japan/Cinderella_CLV_NTSC_side2_JapanImport_CC_2020-01-22_19-29-23.ldf
-/home/sdi/raid/sftp/simoninns/LDV4300D_1/NTSC/Bambi\ Japan/Bambi_CLV_NTSC_side1_JapanImport_LDG_2020-01-22_20-25-19.ldf
-/home/sdi/raid/sftp/simoninns/LDV4300D_1/NTSC/Bambi\ Japan/Bambi_CLV_NTSC_side2_JapanImport_LDG_2020-01-22_21-20-20.ldf

@@ -1,2 +1,0 @@
-export VDIR=~/Coding/github/ld-decode-venv
-source "$VDIR/bin/activate"
