@@ -1,11 +1,11 @@
 # ORC Project File
 # Version: 1.0
-# Test: PAL 2D RGB (pal2d decoder)
-# Equivalent to: ld-chroma-decoder -s 1 -l 10 -p rgb
+# Test: PAL Transform2D RGB
+# Equivalent to: ld-chroma-decoder -s 1 -l 10 -f transform2d -p rgb
 
 project:
-  name: PAL_2D_RGB
-  description: PAL 2D decoder (Transform2D) - RGB output
+  name: PAL_Transform2D_RGB
+  description: PAL Transform2D decoder - RGB output
   version: 1.0
 
 dag:
@@ -30,10 +30,10 @@ dag:
       parameters:
         output_path:
           type: string
-          value: ../../rgb/pal_2d_rgb.rgb
+          value: ../../rgb/pal_transform2d_rgb.rgb
         decoder_type:
           type: string
-          value: pal2d
+          value: transform2d
         output_format:
           type: string
           value: rgb

@@ -327,11 +327,17 @@ test_pal_decoders() {
     # Use a PAL CLV sample for testing
     local pal_clv="$TBC_ROOT/pal/clv/Domesday_DD86-DS1_NationalB_PP_20191014_CLV_PAL_00-60_pos32794.tbc"
     
-    # Test PAL 2D decoder (default) - Transform2D
+    # Test PAL 2D decoder (default)
     run_test "PAL_2D_RGB" \
         "$pal_clv" \
         "-s 1 -l 10 -p rgb" \
         "$OUTPUT_DIR/pal_2d_rgb.rgb"
+    
+    # Test PAL Transform 2D decoder
+    run_test "PAL_Transform2D_RGB" \
+        "$pal_clv" \
+        "-s 1 -l 10 -f transform2d -p rgb" \
+        "$OUTPUT_DIR/pal_transform2d_rgb.rgb"
     
     # Test PAL Transform 3D decoder
     run_test "PAL_Transform3D_RGB" \

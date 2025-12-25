@@ -202,6 +202,10 @@ run_orc_test() {
     
     log_verbose "  LD Checksum:  $expected_checksum"
     
+    # Display signatures
+    echo -e "  ${YELLOW}Expected (ld-chroma-decoder):${NC} $expected_checksum"
+    echo -e "  ${YELLOW}Got (orc-cli):               ${NC} $checksum"
+    
     # Compare checksums
     if [[ "$checksum" == "$expected_checksum" ]]; then
         log_success "Test passed: $test_name"
@@ -209,8 +213,6 @@ run_orc_test() {
         return 0
     else
         log_error "Signature mismatch: $test_name"
-        echo -e "  ${YELLOW}Expected (ld-chroma-decoder):${NC} $expected_checksum"
-        echo -e "  ${YELLOW}Got (orc-cli):               ${NC} $checksum"
         ((TESTS_FAILED++)) || true
         return 1
     fi
@@ -222,10 +224,15 @@ test_pal_decoders() {
     log_info "Testing PAL Decoders"
     log_info "=========================================="
     
-    # Test PAL 2D decoder (default) - Transform2D
+    # Test PAL 2D decoder (default)
     run_orc_test "PAL_2D_RGB" \
         "$PROJECTS_DIR/pal-2d-rgb.yaml" \
         "$OUTPUT_DIR/pal_2d_rgb.rgb"
+    
+    # Test PAL Transform 2D decoder
+    run_orc_test "PAL_Transform2D_RGB" \
+        "$PROJECTS_DIR/pal-transform2d-rgb.yaml" \
+        "$OUTPUT_DIR/pal_transform2d_rgb.rgb"
     
     # Test PAL Transform 3D decoder
     run_orc_test "PAL_Transform3D_RGB" \
