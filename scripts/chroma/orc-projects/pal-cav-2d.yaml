@@ -1,0 +1,49 @@
+# ORC Project File
+# Version: 1.0
+# Test: PAL CAV 2D
+# Equivalent to: ld-chroma-decoder -s 1 -l 5 -p rgb (with CAV source)
+
+project:
+  name: PAL_CAV_2D
+  description: PAL 2D decoder - CAV source
+  version: 1.0
+
+dag:
+  nodes:
+    - id: node_1
+      stage: LDPALSource
+      node_type: SOURCE
+      display_name: LD PAL Source
+      x: -400
+      y: -200
+      parameters:
+        tbc_path:
+          type: string
+          value: ../../tbc/ldf/pal/cav/GGV1011_CAV_PAL_side2_DD1_2019-06-12_20-35-19_pos11931.tbc
+    
+    - id: node_2
+      stage: chroma_sink
+      node_type: SINK
+      display_name: Chroma Decoder Sink
+      x: -100
+      y: -200
+      parameters:
+        output_path:
+          type: string
+          value: ../../rgb/pal_cav_2d.rgb
+        decoder_type:
+          type: string
+          value: pal2d
+        output_format:
+          type: string
+          value: rgb
+        start_frame:
+          type: integer
+          value: 1
+        length:
+          type: integer
+          value: 5
+  
+  edges:
+    - from: node_1
+      to: node_2

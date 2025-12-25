@@ -1,0 +1,49 @@
+# ORC Project File
+# Version: 1.0
+# Test: PAL 2D YUV
+# Equivalent to: ld-chroma-decoder -s 1 -l 10 -p yuv
+
+project:
+  name: PAL_2D_YUV
+  description: PAL 2D decoder - YUV output
+  version: 1.0
+
+dag:
+  nodes:
+    - id: node_1
+      stage: LDPALSource
+      node_type: SOURCE
+      display_name: LD PAL Source
+      x: -400
+      y: -200
+      parameters:
+        tbc_path:
+          type: string
+          value: ../../tbc/ldf/pal/clv/Domesday_DD86-DS1_NationalB_PP_20191014_CLV_PAL_00-60_pos32794.tbc
+    
+    - id: node_2
+      stage: chroma_sink
+      node_type: SINK
+      display_name: Chroma Decoder Sink
+      x: -100
+      y: -200
+      parameters:
+        output_path:
+          type: string
+          value: ../../rgb/pal_2d_yuv.yuv
+        decoder_type:
+          type: string
+          value: pal2d
+        output_format:
+          type: string
+          value: yuv
+        start_frame:
+          type: integer
+          value: 1
+        length:
+          type: integer
+          value: 10
+  
+  edges:
+    - from: node_1
+      to: node_2

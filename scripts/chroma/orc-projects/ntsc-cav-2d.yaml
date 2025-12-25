@@ -1,0 +1,49 @@
+# ORC Project File
+# Version: 1.0
+# Test: NTSC CAV 2D
+# Equivalent to: ld-chroma-decoder -s 1 -l 5 -f ntsc2d -p rgb (with CAV source)
+
+project:
+  name: NTSC_CAV_2D
+  description: NTSC 2D decoder - CAV source
+  version: 1.0
+
+dag:
+  nodes:
+    - id: node_1
+      stage: LDNTSCSource
+      node_type: SOURCE
+      display_name: LD NTSC Source
+      x: -400
+      y: -200
+      parameters:
+        tbc_path:
+          type: string
+          value: ../../tbc/ldf/ntsc/cav/Pioneer_GGV1069_CAV_NTSC_side1_dup1_2019-09-12_21-11-38_pos3584.tbc
+    
+    - id: node_2
+      stage: chroma_sink
+      node_type: SINK
+      display_name: Chroma Decoder Sink
+      x: -100
+      y: -200
+      parameters:
+        output_path:
+          type: string
+          value: ../../rgb/ntsc_cav_2d.rgb
+        decoder_type:
+          type: string
+          value: ntsc2d
+        output_format:
+          type: string
+          value: rgb
+        start_frame:
+          type: integer
+          value: 1
+        length:
+          type: integer
+          value: 5
+  
+  edges:
+    - from: node_1
+      to: node_2
