@@ -37,31 +37,32 @@ decode-orc-testdata/
 
 ## Source Data
 
-The test data is generated from **77 LaserDisc captures** spanning different formats:
+The test data is generated from **20 discs** (out of 77 analyzed LaserDisc captures) to provide maximum format and content diversity:
 
-- **NTSC CAV**: 15 discs (frame-based addressing)
-- **NTSC CLV**: 4 discs (timecode-based addressing)
-- **PAL CAV**: 45 discs (frame-based addressing)
-- **PAL CLV**: 13 discs (timecode-based addressing)
+- **NTSC CAV**: 5 discs (calibration, arcade games, educational, audio test)
+- **NTSC CLV**: 2 discs (movies)
+- **PAL CAV**: 6 discs (calibration, documentaries, educational, data, entertainment)
+- **PAL CLV**: 7 discs (historical data discs with variant types)
 
-Each source disc has been analyzed to determine valid VBI frame ranges and file positions.
+All 77 source discs have been analyzed to determine valid VBI frame ranges and file positions. The 20 selected discs represent the most diverse subset for testing purposes.
 
 ## Test File Generation
 
 ### Generate Test Files
 
-The `generate_test_decodes.sh` script creates randomized test decodes:
+The `generate_test_decodes.sh` script creates randomized test .ldf snippets:
 
 ```bash
 cd scripts/ld-decode
-./generate_test_decodes.sh > decode_commands.sh
+./generate_test_decodes.sh
 ```
 
-This generates `decode_commands.sh` with ~173 decode commands that:
-- Extract 48-58 frames for NTSC (target: ~50MB TBC files)
-- Extract 30-40 frames for PAL (target: ~50MB TBC files)
-- Sample from start/middle/end of each disc
-- Create more samples from CLV discs (fewer total discs)
+This generates `decode_commands.sh` with **20 decode commands** (one per selected disc) that:
+- Use `--write-test-ldf` to create .ldf snippet files only (no full TBC output)
+- Extract 48-58 frames for NTSC (typical .ldf size: ~50-80MB)
+- Extract 30-40 frames for PAL (typical .ldf size: ~50-80MB)
+- Sample from randomized positions (start/middle/end of each disc)
+- Automatically clean up temporary .tbc/.json files after .ldf creation
 
 ### Execute Decodes
 
@@ -70,7 +71,13 @@ cd scripts/ld-decode
 ./decode_commands.sh
 ```
 
-This will generate test files in `ld-decode/ntsc/cav`, `ld-decode/ntsc/clv`, `ld-decode/pal/cav`, and `ld-decode/pal/clv`.
+This will generate **20 .ldf snippet files** in:
+- `ld-decode/ntsc/cav/` (5 files)
+- `ld-decode/ntsc/clv/` (2 files)
+- `ld-decode/pal/cav/` (6 files)
+- `ld-decode/pal/clv/` (7 files)
+
+The .ldf files contain only the RF samples needed for the selected frame ranges, making them ideal for test data repositories.
 
 ### Clean Test Files
 
@@ -79,16 +86,18 @@ cd scripts/ld-decode
 ./clean_test_files.sh
 ```
 
-Removes all generated files (`.tbc`, `.tbc.json`, `.efm`, `.log`, `.pcm`, `.tbc.db`).
+Removes all generated files from the output directories. Since we use `--write-test-ldf`, typically only .ldf files remain (temporary .tbc/.json files are auto-deleted during generation).
 
-## TBC File Size Limits
+## File Size Guidelines
 
 Based on actual measurements:
 
-- **NTSC**: ~935 KB per frame → 50 MB limit = ~53 frames maximum
-- **PAL**: ~1.4 MB per frame → 50 MB limit = ~35 frames maximum
+- **NTSC .ldf snippets**: 48-58 frames → typical size 50-80MB
+- **PAL .ldf snippets**: 30-40 frames → typical size 50-80MB
 
-See `ld-decode/TBC_SIZE_LIMITS.txt` for details.
+These frame counts keep individual test files at a reasonable size for GitHub repositories while providing sufficient data for testing.
+
+See `scripts/ld-decode/TBC_SIZE_LIMITS.txt` for TBC size calculations.
 
 ## Source Stages
 

@@ -1,0 +1,112 @@
+Multi-Disc Stacking Test Candidates
+====================================
+
+These disc sets contain multiple physical copies of the same master,
+suitable for testing multi-disc stacking features. All copies share
+the same file position range for alignment.
+
+Format: Title (Type) - Number of copies - File position range
+
+
+HIGH PRIORITY - 4+ COPIES WITH SAME FILE RANGE
+===============================================
+
+1. The World the UN and You (PAL CAV) - 7 copies ✓
+   File pos: 1000 - 41000 (40,000 frames) - VERIFIED FOR DISC 1,3,5,7
+   
+   Disc1: VBI 669 - 40669   | File pos 1000 - 41000  ✓ IN MASTER LIST
+   Disc2: VBI ??? - ?????   | File pos ???? - ????? ⚠️ NEEDS VERIFICATION
+   Disc3: VBI 682 - 40682   | File pos 1000 - 41000  ✓ IN MASTER LIST
+   Disc4: VBI ??? - ?????   | File pos ???? - ????? ⚠️ NEEDS VERIFICATION
+   Disc5: VBI 649 - 40649   | File pos 1000 - 41000  ✓ IN MASTER LIST
+   Disc6: VBI ??? - ?????   | File pos ???? - ????? ⚠️ NEEDS VERIFICATION
+   Disc7: VBI 681 - 40681   | File pos 1000 - 41000  ✓ IN MASTER LIST
+   
+   Note: All 7 physical copies exist in /home/sdi/raid/library/Interactive_Video/The_UN/
+   Discs 1,3,5,7 confirmed with identical file position ranges.
+   Discs 2,4,6 exist but not yet in master lists - need verification of ranges.
+
+
+2. Domesday NationalB_PP (PAL CLV) - 8 copies
+   File pos: 1000 - 86000 (85,000 frames) [except DS7]
+   
+   DS1:  VBI 0:31.20 - 57:11.20  | File pos 1000 - 86000
+   DS2:  VBI 0:31.11 - 57:11.12  | File pos 1000 - 86000
+   DS4:  VBI 0:31.09 - 57:11.09  | File pos 1000 - 86000
+   DS6:  VBI 0:31.10 - 57:11.11  | File pos 1000 - 86000
+   DS7:  VBI 0:31.22 - 43:42.21  | File pos 1000 - 66000  ⚠️ SHORTER
+   DS8:  VBI 0:31.14 - 57:11.15  | File pos 1000 - 86000
+   DS10: VBI 0:31.10 - 57:11.11  | File pos 1000 - 86000
+   DS12: VBI 0:31.01 - 57:11.01  | File pos 1000 - 86000
+   
+   Note: 7 discs with same range (DS7 excluded). Excellent for large-scale
+   stacking tests with CLV format.
+
+
+3. Dragon's Lair (NTSC CAV) - 5 copies (4 usable)
+   File pos: 1000 - 36000 (35,000 frames) [DS1, DS2, DS3, DS4]
+   
+   DS1: VBI 386 - 28386  | File pos 1000 - 36000  ✓ IN MASTER LIST
+   DS2: VBI 371 - 28371  | File pos 1000 - 36000  ✓ IN MASTER LIST
+   DS3: VBI ??? - ?????  | File pos ???? - ????? ⚠️ NEEDS VERIFICATION
+   DS4: VBI     - 28324  | File pos 1000 - 36000  ✓ IN MASTER LIST
+   DS5: VBI 320 - 320    | File pos 1000 - 1000   ⚠️ UNUSABLE (single frame)
+   
+   Note: 5 physical copies exist, 4 likely usable with same file position range.
+   Classic arcade game with different pressings. DS3 not yet in master list.
+
+
+4. British Garden Birds Side1 (PAL CAV) - 4 copies
+   File pos: 1000 - 51000 (50,000 frames)
+   
+   DS1: VBI ??? - ?????  | File pos ???? - ????? ⚠️ NEEDS VERIFICATION
+   DS2: VBI 704 - 50704  | File pos 1000 - 51000  ✓ IN MASTER LIST
+   DS3: VBI 665 - 50665  | File pos 1000 - 51000  ✓ IN MASTER LIST
+   DS4: VBI 704 - 50704  | File pos 1000 - 51000  ✓ IN MASTER LIST
+
+
+5. British Garden Birds Side2 (PAL CAV) - 4 copies
+   File pos: 1000 - 51000 (50,000 frames)
+   
+   DS1: VBI 699 - 50689  | File pos 1000 - 51000  ✓ IN MASTER LIST
+   DS2: VBI 695 - 50695  | File pos 1000 - 51000  ✓ IN MASTER LIST
+   DS3: VBI 673 - 50673  | File pos 1000 - 51000  ✓ IN MASTER LIST
+   DS4: VBI ??? - ?????  | File pos ???? - ????? ⚠️ NEEDS VERIFICATION
+
+
+6. Apple Visual Almanac SideA (NTSC CAV) - 3 copies
+   File pos: 1000 - 51000 (50,000 frames) [DS1, DS2 only]
+   
+   DS1: VBI 581 - 47605  | File pos 1000 - 51000
+   DS2: VBI 573 - 47597  | File pos 1000 - 51000
+   DS3: VBI 562 - 38750  | File pos 1000 - 41000  ⚠️ SHORTER
+
+
+MEDIUM PRIORITY - 2 COPIES
+===========================
+
+7. Pioneer GGV1069 (NTSC CAV) - 2 copies
+   File pos: 1000 - 21000 (20,000 frames)
+   
+   Copy 1: VBI 715 - 20715  | File pos 1000 - 21000
+   Copy 2: VBI 646 - 20646  | File pos 1000 - 21000
+   
+   Note: Calibration disc, useful for quality comparison testing.
+
+
+RECOMMENDATIONS FOR STACKING TESTS
+===================================
+
+Best candidates (in order):
+1. Domesday NationalB_PP (PAL CLV) - 7 copies, large dataset
+2. The World the UN and You (PAL CAV) - 7 copies, excellent for comprehensive testing
+3. Dragon's Lair (NTSC CAV) - 4 usable copies, arcade game
+4. British Garden Birds (PAL CAV) - 4 copies each side
+
+Key considerations:
+- All listed sets have identical file position ranges across copies
+- VBI ranges vary due to different starting positions on physical discs
+- File position alignment is what matters for stacking
+- Larger datasets (50k+ frames) provide more test coverage
+- Mix of CAV and CLV formats provides format diversity
+- Mix of NTSC and PAL provides standard diversity
