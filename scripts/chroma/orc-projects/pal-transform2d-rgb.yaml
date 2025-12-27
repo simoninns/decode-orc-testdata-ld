@@ -7,6 +7,7 @@ project:
   name: PAL_Transform2D_RGB
   description: PAL Transform2D decoder - RGB output
   version: 1.0
+  video_format: PAL
 
 dag:
   nodes:
@@ -17,11 +18,22 @@ dag:
       x: -400
       y: -200
       parameters:
-        tbc_path:
+        input_path:
           type: string
           value: ../../tbc/ldf/pal/clv/Domesday_DD86-DS1_NationalB_PP_20191014_CLV_PAL_00-60_pos32794.tbc
     
     - id: node_2
+      stage: field_map
+      node_type: TRANSFORM
+      display_name: Field Map (Frames 1-10)
+      x: -250
+      y: -200
+      parameters:
+        ranges:
+          type: string
+          value: 0-19
+    
+    - id: node_3
       stage: chroma_sink
       node_type: SINK
       display_name: Chroma Decoder Sink
@@ -37,13 +49,9 @@ dag:
         output_format:
           type: string
           value: rgb
-        start_frame:
-          type: integer
-          value: 1
-        length:
-          type: integer
-          value: 10
   
   edges:
     - from: node_1
       to: node_2
+    - from: node_2
+      to: node_3

@@ -161,8 +161,9 @@ run_orc_test() {
         return 1
     fi
     
-    # Run orc-cli
-    local cmd="$ORC_CLI process \"$project_file\""
+    # Run orc-cli from the scripts/chroma directory (where relative paths in YAML files are based)
+    # The YAML files use paths like ../../tbc/... which are relative to scripts/chroma/
+    local cmd="cd \"$SCRIPT_DIR\" && \"$ORC_CLI\" process \"$project_file\""
     log_verbose "  Command: $cmd"
     
     if [[ $VERBOSE -eq 1 ]]; then

@@ -361,7 +361,7 @@ test_pal_decoders() {
         # Test monochrome output
         run_test "PAL_2D_Mono" \
             "$pal_clv" \
-            "-s 1 -l 10 -b -p rgb" \
+            "-s 1 -l 10 -f mono -p rgb" \
             "$OUTPUT_DIR/pal_2d_mono.rgb"
         
         # Test with chroma gain adjustment
@@ -442,7 +442,7 @@ test_ntsc_decoders() {
         # Test monochrome output
         run_test "NTSC_2D_Mono" \
             "$ntsc_clv" \
-            "-s 1 -l 10 -b -p rgb" \
+            "-s 1 -l 10 -f mono -p rgb" \
             "$OUTPUT_DIR/ntsc_2d_mono.rgb"
         
         # Test with chroma noise reduction
