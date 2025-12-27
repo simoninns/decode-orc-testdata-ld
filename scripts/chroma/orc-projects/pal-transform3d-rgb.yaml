@@ -25,13 +25,13 @@ dag:
     - id: node_2
       stage: field_map
       node_type: TRANSFORM
-      display_name: Field Map (Frames 1-10)
+      display_name: Field Map (Frames 1-10 + lookahead)
       x: -250
       y: -200
       parameters:
         ranges:
           type: string
-          value: 0-19
+          value: 0-27
     
     - id: node_3
       stage: chroma_sink
