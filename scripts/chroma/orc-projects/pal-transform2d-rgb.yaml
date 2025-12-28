@@ -11,7 +11,7 @@ project:
 
 dag:
   nodes:
-    - id: node_1
+    - id: 1
       stage: LDPALSource
       node_type: SOURCE
       display_name: LD PAL Source
@@ -22,7 +22,7 @@ dag:
           type: string
           value: ../../tbc/ldf/pal/clv/Domesday_DD86-DS1_NationalB_PP_20191014_CLV_PAL_00-60_pos32794.tbc
     
-    - id: node_2
+    - id: 2
       stage: field_map
       node_type: TRANSFORM
       display_name: Field Map (Frames 1-10)
@@ -33,7 +33,7 @@ dag:
           type: string
           value: 0-19
     
-    - id: node_3
+    - id: 3
       stage: chroma_sink
       node_type: SINK
       display_name: Chroma Decoder Sink
@@ -51,7 +51,7 @@ dag:
           value: rgb
   
   edges:
-    - from: node_1
-      to: node_2
-    - from: node_2
-      to: node_3
+    - from: 1
+      to: 2
+    - from: 2
+      to: 3

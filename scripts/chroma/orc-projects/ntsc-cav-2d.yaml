@@ -11,7 +11,7 @@ project:
 
 dag:
   nodes:
-    - id: node_1
+    - id: 1
       stage: LDNTSCSource
       node_type: SOURCE
       display_name: LD NTSC Source
@@ -22,7 +22,7 @@ dag:
           type: string
           value: ../../tbc/ldf/ntsc/cav/Pioneer_GGV1069_CAV_NTSC_side1_dup1_2019-09-12_21-11-38_pos3584.tbc
         
-    - id: node_2
+    - id: 2
       stage: field_map
       node_type: TRANSFORM
       display_name: Field Map (Frames 1-5)
@@ -34,7 +34,7 @@ dag:
           value: 0-9
     
 
-    - id: node_3
+    - id: 3
       stage: chroma_sink
       node_type: SINK
       display_name: Chroma Decoder Sink
@@ -52,7 +52,7 @@ dag:
           value: rgb
   
   edges:
-    - from: node_1
-      to: node_2
-    - from: node_2
-      to: node_3
+    - from: 1
+      to: 2
+    - from: 2
+      to: 3

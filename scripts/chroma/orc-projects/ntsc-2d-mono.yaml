@@ -11,7 +11,7 @@ project:
 
 dag:
   nodes:
-    - id: node_1
+    - id: 1
       stage: LDNTSCSource
       node_type: SOURCE
       display_name: LD NTSC Source
@@ -22,7 +22,7 @@ dag:
           type: string
           value: ../../tbc/ldf/ntsc/clv/Bambi_CLV_NTSC_side1_JapanImport_LDG_2020-01-22_20-25-19_pos8483.tbc
         
-    - id: node_2
+    - id: 2
       stage: field_map
       node_type: TRANSFORM
       display_name: Field Map (Frames 1-10)
@@ -34,7 +34,7 @@ dag:
           value: 0-19
     
 
-    - id: node_3
+    - id: 3
       stage: chroma_sink
       node_type: SINK
       display_name: Chroma Decoder Sink
@@ -52,7 +52,7 @@ dag:
           value: rgb
   
   edges:
-    - from: node_1
-      to: node_2
-    - from: node_2
-      to: node_3
+    - from: 1
+      to: 2
+    - from: 2
+      to: 3
