@@ -45,8 +45,8 @@ decode_file() {
     # Decode the file
     if ld-decode $decoder_flag "$input_file" "$output_file" >/dev/null 2>&1; then
         echo "  ✓ Success: $output_file.tbc"
-        # Remove unnecessary files, keep only .tbc and .tbc.json
-        rm -f "$output_file.efm" "$output_file.pcm" "$output_file.log"
+        # Remove log files, keep .tbc, .tbc.json, .efm, and .pcm
+        rm -f "$output_file.log"
         return 0
     else
         echo "  ✗ Failed to decode $input_file"
