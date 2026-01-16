@@ -8,11 +8,12 @@ project:
   description: PAL Transform3D decoder - RGB output
   version: 1.0
   video_format: PAL
+  source_format: Composite
 
 dag:
   nodes:
     - id: 1
-      stage: LDPALSource
+      stage: PAL_Comp_Source
       node_type: SOURCE
       display_name: LD PAL Source
       x: -400
@@ -34,7 +35,7 @@ dag:
           value: 0-27
     
     - id: 3
-      stage: chroma_sink
+      stage: raw_video_sink
       node_type: SINK
       display_name: Chroma Decoder Sink
       x: -100
