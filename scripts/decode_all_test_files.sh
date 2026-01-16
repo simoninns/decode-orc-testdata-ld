@@ -42,14 +42,20 @@ decode_file() {
     
     echo "Decoding: $rel_path/$filename.ldf ($decoder_flag)"
     
-    # Decode the file
-    if ld-decode $decoder_flag "$input_file" "$output_file" >/dev/null 2>&1; then
+    # Decode the file - capture stderr to show errors
+    local decode_output
+    decode_output=$(ld-decode $decoder_flag "$input_file" "$output_file" 2>&1)
+    local decode_status=$?
+    
+    if [ $decode_status -eq 0 ]; then
         echo "  ✓ Success: $output_file.tbc"
         # Remove log files, keep .tbc, .tbc.json, .efm, and .pcm
         rm -f "$output_file.log"
         return 0
     else
         echo "  ✗ Failed to decode $input_file"
+        # Show the error (first few lines)
+        echo "$decode_output" | grep -i "error\|traceback\|modulenotfound" | head -3
         return 1
     fi
 }

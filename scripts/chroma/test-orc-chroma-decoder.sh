@@ -22,16 +22,16 @@ PROJECTS_DIR="$SCRIPT_DIR/orc-projects"
 OUTPUT_DIR="$TESTDATA_ROOT/rgb"
 SIGNATURES_FILE="$SCRIPT_DIR/ld-chroma-decoder-references.txt"
 
-# Try to find orc-cli: first from environment/PATH, then in build folder
+# Try to find orc-cli: prefer latest build, allow environment override
 if [[ -n "${ORC_CLI:-}" ]] && command -v "$ORC_CLI" &> /dev/null; then
-    # ORC_CLI is set and exists
+    # ORC_CLI environment variable is set and exists (user override)
     ORC_CLI="$ORC_CLI"
-elif command -v orc-cli &> /dev/null; then
-    # orc-cli is in PATH
-    ORC_CLI="orc-cli"
 elif [[ -x "$REPO_ROOT/build/bin/orc-cli" ]]; then
-    # Found in build directory
+    # Use latest build from build directory (PREFERRED)
     ORC_CLI="$REPO_ROOT/build/bin/orc-cli"
+elif command -v orc-cli &> /dev/null; then
+    # Fall back to orc-cli in PATH
+    ORC_CLI="orc-cli"
 else
     # Will be checked later in main()
     ORC_CLI="orc-cli"
